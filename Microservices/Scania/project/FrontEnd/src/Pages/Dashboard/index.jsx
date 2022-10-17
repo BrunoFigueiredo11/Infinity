@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../Components/Header";
 import Item from "../../Components/Items";
 import Footer from "../../Components/Footer";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import "./style.css";
 import api from "../../Services/api";
 
 export default function Dashboard() {
+    const [ open, setOpen ] = useState(false)
     let navigate = useNavigate()
     let location = useLocation()
 
@@ -16,17 +19,24 @@ export default function Dashboard() {
     }
 
     const handleParticipate = async () => {
+        setOpen(true)
         api.put(`/licitacao/${location.state.cd_licitacao}/1`).then((response) => {
-            console.log(response.data);
+            setTimeout(function() {
+                navigate('/home')
+                setOpen(false)
+            }, 500)
         })
-        navigate('/home')
     }
 
     const handleDescarte = async () => {
+        setOpen(true)
         api.put(`/licitacao/${location.state.cd_licitacao}/3`).then((response) => {
-            console.log(response.data);
+            console.log(response)
+            setTimeout(function() {
+                navigate('/home')
+                setOpen(false)
+            }, 500)
         })
-        navigate('/home')
     }
 
     useEffect(() => {
@@ -62,6 +72,13 @@ export default function Dashboard() {
                     <Item data={location.state} />
                 </section>
             </div>
+            <Footer />
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={open}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <Footer />
         </main>
     )
