@@ -32,7 +32,7 @@ public class LicitacaoController {
     }
 // REALIZA A ALTERAÇÃO NO BANCO DO STATUS E ENVIA O EMAIL PARA O RESPONSAVEL
     @PutMapping("/licitacao/{id}/{status}")
-    public ResponseEntity<Void> list(@PathVariable int id, @PathVariable int status) {
+    public boolean list(@PathVariable int id, @PathVariable int status) {
         try {
             List<Licitacao> lic = lista(id);
             licitacaoRepository.updateStatus(status, id);
@@ -61,9 +61,9 @@ public class LicitacaoController {
                         "00/00/0000",
                         StatusEmail.SEND));
             }
-            return new ResponseEntity<>(HttpStatus.OK);
+            return true;
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+            return false;
         }
 
     }
