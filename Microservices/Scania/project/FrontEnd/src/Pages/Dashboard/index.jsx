@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../Components/Header";
 import Item from "../../Components/Items";
 import Footer from "../../Components/Footer";
@@ -8,6 +8,7 @@ import "./style.css";
 import api from "../../Services/api";
 
 export default function Dashboard() {
+    let navigate = useNavigate()
     let location = useLocation()
 
     const handleItemLink = async () => {
@@ -18,12 +19,14 @@ export default function Dashboard() {
         api.put(`/licitacao/${location.state.cd_licitacao}/1`).then((response) => {
             console.log(response.data);
         })
+        navigate('/home')
     }
 
     const handleDescarte = async () => {
         api.put(`/licitacao/${location.state.cd_licitacao}/3`).then((response) => {
             console.log(response.data);
         })
+        navigate('/home')
     }
 
     useEffect(() => {

@@ -26,7 +26,7 @@
 
 .dashboard-card {
     width: 80%;
-    height: 90%;
+    height: 60vh;
     border-radius: 15px;
     background-color: #fafafa;
     box-shadow: 0 0 0.5em #121212;
@@ -40,9 +40,11 @@
 }
 
 .dashboard-buttons {
+    width: 20%;
+    height: 15vh;
     display: flex;
     align-items: flex-end;
-    width: 20%;
+    justify-content: space-around;
     display: flex;
     flex-direction: column;
 }
