@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Header from "../../Components/Header";
 import Table from "../../Components/Table";
 import Footer from "../../Components/Footer";
@@ -10,7 +10,7 @@ export default function Home() {
     return(
         <main id="home">
             <Header />
-            <div className="home-content">
+            <div className="home-container">
                 <section className="home-table">
                     <Table />
                 </section>

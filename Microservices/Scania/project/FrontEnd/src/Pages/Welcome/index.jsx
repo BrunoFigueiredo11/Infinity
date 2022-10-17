@@ -9,12 +9,8 @@ import "./style.css";
 export default function Welcome() {
     let params = useNavigate();
 
-    const handleInitApplication = async (result) => {
-        if (result === "registration") {
-            params("/registration")
-        } else {
-            params("/login")
-        }
+    const handleInitApplication = async () => {
+        params("/home")
     }
       
     return(
@@ -25,11 +21,8 @@ export default function Welcome() {
                     <h2>{Content.title}</h2>
                     <p>{Content.content}</p>
                     <section className="welcome-init">
-                        <button className="welcome-left-button" onClick={() => handleInitApplication("registration")}>
-                            {Content.registration}
-                        </button>
                         <button className="welcome-right-button" onClick={() => handleInitApplication("login")}>
-                            {Content.login}
+                            Começar
                         </button>
                     </section>
                 </div>

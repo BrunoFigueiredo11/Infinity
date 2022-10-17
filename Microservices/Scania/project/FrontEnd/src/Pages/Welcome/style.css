@@ -54,17 +54,8 @@
     color: #fff;
 }
 
-.welcome-left-button {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border: 1px solid #00a4cd;
-    background-color: #000;
-    color: #fff;
-}
-
 .welcome-right-button {
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 15px;
     border: 1px solid #00a4cd;
     background-color: #00a4cd;
 }

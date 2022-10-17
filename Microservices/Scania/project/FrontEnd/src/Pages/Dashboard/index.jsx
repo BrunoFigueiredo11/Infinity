@@ -32,7 +32,7 @@ export default function Dashboard() {
     return(
         <main id="dashboard">
             <Header />
-            <div className="dashboard-content">
+            <div className="dashboard-container">
                 <section className="dashboard-card-section">
                     	<article className="dashboard-card">
                             <h2>Página de detalhamento</h2>

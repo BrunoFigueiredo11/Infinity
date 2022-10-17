@@ -1,20 +1,15 @@
-.home-content {
-    width: 100%;
-    height: 76vh;
+.home-container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 18vh;
-}
-
-.home-dark {
-    background-color: #000000e1;
-}
-
-.home-sure {
-    background-color: none;
+    padding-top: 8vh;
+    padding-bottom: 10.5vh;
 }
 
 .home-table {
     width: 85%;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }

@@ -1,17 +1,14 @@
 #header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 9vh;
+    width: 100vw;
+    height: 8vh;
     position: fixed;
     top: 0;
-    background-color: #000000;
-    box-shadow: 0 0 1.5em #121212;
+    display: flex;
+    align-items: center;
+    background-color: #000;
 }
 
 #header img {
-    border-radius: 25px;
     cursor: pointer;
-    height: 60%;
-    margin-left: 5rem;
+    height: 70%;
 }
