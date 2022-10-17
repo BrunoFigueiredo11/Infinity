@@ -8,166 +8,22 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import api from "../../Services/api";
 
 import "./style.css";
+import { useState } from 'react';
 
 const columns = [
-  { id: 'edital', label: 'Edital', minWidth: "auto" },
-  { id: 'organ', label: 'Orgão', minWidth: "auto" },
-  { id: 'description', label: 'Descrição', minWidth: "auto" },
-  { id: 'date_reception', label: 'Data de acolhimento', minWidth: "auto" },
-  { id: 'date_dispute', label: 'Data de Disputa', minWidth: "auto" },
-  { id: 'status', label: 'Status', minWidth: "auto" },
+  { id: 'cd_edital', label: 'Edital', minWidth: "auto" },
+  { id: 'orgao', label: 'Orgão', minWidth: "auto" },
+  { id: 'texto', label: 'Descrição', minWidth: "auto" },
+  { id: 'dt_acolhimento', label: 'Data de acolhimento', minWidth: "auto" },
+  { id: 'dt_disputa', label: 'Data de Disputa', minWidth: "auto" },
+  { id: 'tipo', label: 'Status', minWidth: "auto" },
 ];
 
-const rows = [
-  {
-    edital: 123,
-    organ: "Orgão ABC",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloremque similique quae inventore itaque explicabo soluta velit, maiores non optio dignissimos? Distinctio numquam aspernatur reiciendis eius odit voluptatem repudiandae non.",
-    date_reception: "25/08/2022 às 15:40:24",
-    date_dispute: "25/09/2022 às 16:00:00",
-    status: "S",
-    link: "www.google.com.br",
-    value: "10.000,00",
-    item: 1,
-    description_item: 'Lorem ipsum dolor',
-    unit: 'UND',
-    qnt: 1,
-    throw: '-',
-    situation: 'Recebendo propostas'
-  },
-  {
-    edital: 123,
-    organ: "Orgão ABC",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloremque similique quae inventore itaque explicabo soluta velit, maiores non optio dignissimos? Distinctio numquam aspernatur reiciendis eius odit voluptatem repudiandae non.",
-    date_reception: "25/08/2022 às 15:40:24",
-    date_dispute: "25/09/2022 às 16:00:00",
-    status: "S",
-    link: "www.google.com.br",
-    value: "10.000,00",
-    item: 1,
-    description_item: 'Lorem ipsum dolor',
-    unit: 'UND',
-    qnt: 1,
-    throw: '-',
-    situation: 'Recebendo propostas'
-  },
-  {
-    edital: 123,
-    organ: "Orgão ABC",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloremque similique quae inventore itaque explicabo soluta velit, maiores non optio dignissimos? Distinctio numquam aspernatur reiciendis eius odit voluptatem repudiandae non.",
-    date_reception: "25/08/2022 às 15:40:24",
-    date_dispute: "25/09/2022 às 16:00:00",
-    status: "S",
-    link: "www.google.com.br",
-    value: "10.000,00",
-    item: 1,
-    description_item: 'Lorem ipsum dolor',
-    unit: 'UND',
-    qnt: 1,
-    throw: '-',
-    situation: 'Recebendo propostas'
-  },
-  {
-    edital: 123,
-    organ: "Orgão ABC",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloremque similique quae inventore itaque explicabo soluta velit, maiores non optio dignissimos? Distinctio numquam aspernatur reiciendis eius odit voluptatem repudiandae non.",
-    date_reception: "25/08/2022 às 15:40:24",
-    date_dispute: "25/09/2022 às 16:00:00",
-    status: "S",
-    link: "www.google.com.br",
-    value: "10.000,00",
-    item: 1,
-    description_item: 'Lorem ipsum dolor',
-    unit: 'UND',
-    qnt: 1,
-    throw: '-',
-    situation: 'Recebendo propostas'
-  },
-  {
-    edital: 123,
-    organ: "Orgão ABC",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloremque similique quae inventore itaque explicabo soluta velit, maiores non optio dignissimos? Distinctio numquam aspernatur reiciendis eius odit voluptatem repudiandae non.",
-    date_reception: "25/08/2022 às 15:40:24",
-    date_dispute: "25/09/2022 às 16:00:00",
-    status: "S",
-    link: "www.google.com.br",
-    value: "10.000,00",
-    item: 1,
-    description_item: 'Lorem ipsum dolor',
-    unit: 'UND',
-    qnt: 1,
-    throw: '-',
-    situation: 'Recebendo propostas'
-  },
-  {
-    edital: 123,
-    organ: "Orgão ABC",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloremque similique quae inventore itaque explicabo soluta velit, maiores non optio dignissimos? Distinctio numquam aspernatur reiciendis eius odit voluptatem repudiandae non.",
-    date_reception: "25/08/2022 às 15:40:24",
-    date_dispute: "25/09/2022 às 16:00:00",
-    status: "S",
-    link: "www.google.com.br",
-    value: "10.000,00",
-    item: 1,
-    description_item: 'Lorem ipsum dolor',
-    unit: 'UND',
-    qnt: 1,
-    throw: '-',
-    situation: 'Recebendo propostas'
-  },
-  {
-    edital: 123,
-    organ: "Orgão ABC",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloremque similique quae inventore itaque explicabo soluta velit, maiores non optio dignissimos? Distinctio numquam aspernatur reiciendis eius odit voluptatem repudiandae non.",
-    date_reception: "25/08/2022 às 15:40:24",
-    date_dispute: "25/09/2022 às 16:00:00",
-    status: "S",
-    link: "www.google.com.br",
-    value: "10.000,00",
-    item: 1,
-    description_item: 'Lorem ipsum dolor',
-    unit: 'UND',
-    qnt: 1,
-    throw: '-',
-    situation: 'Recebendo propostas'
-  },
-  {
-    edital: 123,
-    organ: "Orgão ABC",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloremque similique quae inventore itaque explicabo soluta velit, maiores non optio dignissimos? Distinctio numquam aspernatur reiciendis eius odit voluptatem repudiandae non.",
-    date_reception: "25/08/2022 às 15:40:24",
-    date_dispute: "25/09/2022 às 16:00:00",
-    status: "S",
-    link: "www.google.com.br",
-    value: "10.000,00",
-    item: 1,
-    description_item: 'Lorem ipsum dolor',
-    unit: 'UND',
-    qnt: 1,
-    throw: '-',
-    situation: 'Recebendo propostas'
-  },
-  {
-    edital: 123,
-    organ: "Orgão ABC",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloremque similique quae inventore itaque explicabo soluta velit, maiores non optio dignissimos? Distinctio numquam aspernatur reiciendis eius odit voluptatem repudiandae non.",
-    date_reception: "25/08/2022 às 15:40:24",
-    date_dispute: "25/09/2022 às 16:00:00",
-    status: "S",
-    link: "www.google.com.br",
-    value: "10.000,00",
-    item: 1,
-    description_item: 'Lorem ipsum dolor',
-    unit: 'UND',
-    qnt: 1,
-    throw: '-',
-    situation: 'Recebendo propostas'
-  },
-];
-
-export default function StickyHeadTable({ mode }) {
+export default function StickyHeadTable() {
+  const [rows, setRows] = useState([])
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   let params = useNavigate()
@@ -182,18 +38,23 @@ export default function StickyHeadTable({ mode }) {
   };
 
   const handleDashboardItem = async (item) => {
-    params('/dashboard',{ state: item, mode });
+    params('/dashboard',{ state: item });
   }
 
+  React.useEffect(() => {
+    api.get('/licitacao').then((res) => {
+      console.log(res.data);
+      setRows(res.data)
+   })
+  },[])
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }} style={{ borderRadius: "15px" }} className={mode === "dark" ? "table-dark" : "table-sure"} >
-      <TableContainer sx={{ maxHeight: 380 }} className={mode === "dark" ? "table-dark" : "table-sure"}>
+    <Paper sx={{ width: '100%', overflow: 'hidden' }} style={{ borderRadius: "15px" }} >
+      <TableContainer sx={{ maxHeight: 380 }}>
         <Table stickyHeader aria-label="sticky table">
-          <TableHead className={mode === "dark" ? "table-dark" : "table-sure"}>
+          <TableHead >
             <TableRow>
               {columns.map((column) => (
-                <TableCell
-                  className={mode === "dark" ? "table-dark" : "table-sure"}
+                <TableCell           
                   key={column.id}
                   align={column.align}
                   style={{ minWidth: column.minWidth, fontWeight: 900, fontFamily: "'Quicksand', sans-serif" }}
