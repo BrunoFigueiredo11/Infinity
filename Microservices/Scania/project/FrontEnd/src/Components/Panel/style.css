@@ -1,0 +1,35 @@
+#panel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 9vh;
+    margin-top: 9vh;
+    position: fixed;
+    top: 0;
+}
+
+.panel-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 1.07rem;
+    font-weight: 900;
+    margin: 0 5rem;
+    color: #292929;
+}
+
+.panel-content a:hover {
+    color: #001885;
+}
+
+.panel-dark {
+    background-color: #d2d2d2;
+    box-shadow: 0 0 1.5em #5a5a5a;
+}
+
+.panel-sure {
+    background-color: #fff;
+    box-shadow: 0 0 1.5em #121212;
+}
