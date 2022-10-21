@@ -38,10 +38,6 @@ export default function Dashboard() {
             }, 500)
         })
     }
-
-    useEffect(() => {
-        console.log(location.state)
-    }, [])
     return(
         <main id="dashboard">
             <Header />
